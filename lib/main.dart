@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-main(List<String> args) {
-  runApp(ExpensesApp());
-}
+main() => runApp(ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
   @override
