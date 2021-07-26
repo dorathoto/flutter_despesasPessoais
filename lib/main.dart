@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'models/transaction.dart';
-import 'package:intl/intl.dart';
 
 main() => runApp(ExpensesApp());
 
@@ -13,6 +12,9 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final titleController = TextEditingController();
+  final valueController = TextEditingController();
+
   final _transactions = [
     Transaction(
       id: 't1',
@@ -35,7 +37,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Despesas Pessoais'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -92,6 +94,39 @@ class MyHomePage extends StatelessWidget {
               );
             }).toList(),
           ),
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    controller: titleController,
+                    decoration: InputDecoration(labelText: 'Titulo'),
+                  ),
+                  TextField(
+                    controller: valueController,
+                    decoration: InputDecoration(labelText: 'Valor (R\$)'),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        style: TextButton.styleFrom(
+                            textStyle:
+                                TextStyle(fontSize: 20, color: Colors.purple)),
+                        child: Text('Nova transação'),
+                        onPressed: () {
+                          print(titleController.text);
+                          print(valueController.text);
+                        },
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
