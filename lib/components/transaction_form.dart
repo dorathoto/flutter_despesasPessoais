@@ -22,6 +22,7 @@ class _TransactionFormState extends State<TransactionForm> {
     }
 
     widget.onSubmit(title, value);
+    //Navigator.of(context).pop(); //fechar modal
   }
 
   @override
