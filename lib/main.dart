@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.infinity,
               child: Card(
                 color: Colors.blue,
-                child: Text('Gráfico'),
+                child: Text('Gráficos'),
                 elevation: 5,
               ),
             ),
