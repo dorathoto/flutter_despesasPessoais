@@ -17,15 +17,19 @@ class ExpensesApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
         fontFamily: 'Quicksand',
-        textTheme: const TextTheme(
-          headline1: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
-          headline6: TextStyle(
-              fontSize: 16.0,
-              fontFamily: 'OpenSans',
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.bold),
-          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'OpenSans'),
-        ),
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline1: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+              headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 18,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold),
+              bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'OpenSans'),
+              button: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline6: TextStyle(
@@ -48,14 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transactions = [
     Transaction(
       id: 't0',
-      title: 'Novo Tênis de Corrida',
-      value: 400.76,
+      title: 'Novo Tênis de Corrida1',
+      value: 3400.76,
       date: DateTime.now().subtract(Duration(days: 33)),
     ),
     Transaction(
       id: 't1',
-      title: 'Novo Tênis de Corrida',
-      value: 310.76,
+      title: 'Novo Tênis de Corrida 2',
+      value: 9910.76,
       date: DateTime.now().subtract(Duration(days: 3)),
     ),
     Transaction(
@@ -67,13 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   List<Transaction> get _recentTransactions {
-    return _transactions
-        .where(
-            (w) => w.date.isAfter(DateTime.now().subtract(Duration(days: 7))))
-        .toList();
-
     return _transactions.where((tr) {
-      return tr.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+      return tr.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
     }).toList();
   }
 
